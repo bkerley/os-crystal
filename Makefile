@@ -7,7 +7,7 @@ QEMUFLAGS := -no-reboot -no-shutdown -m 4096
 
 $(MAIN): $(shell find src | grep .cr) Makefile src/link.ld
 	@echo Creating $@...
-	@crystal build src/main.cr --target=i386 --prelude=empty --link-flags "$(LINKFLAGS)" -o $@
+	@crystal build src/main.cr --cross-compile --target=arm-none-eabi --prelude=empty --link-flags "$(LINKFLAGS)" -o $@
 
 .PHONY: clean
 clean:
