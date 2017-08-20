@@ -4,3 +4,4 @@ main.o
 kernel.elf
 iso
 kernel.iso
+kernel.elf.o
