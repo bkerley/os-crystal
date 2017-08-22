@@ -29,3 +29,7 @@ RUN git clone https://github.com/crystal-lang/crystal.git crystal-llvm
 RUN apt-get install -qy llvm
 
 RUN cd /opt/crystal-llvm && make
+
+ENV PATH=/opt/crystal-llvm/bin:$PATH
+
+ENTRYPOINT zsh
