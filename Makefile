@@ -5,7 +5,7 @@ LIBC_LINK_FLAGS=-L/usr/lib/arm-none-eabi/newlib/armv7e-m -lc_nano
 
 LINKFLAGS := -nostdlib -m32 -Wl,-T,$(shell pwd)/ext/teensy-cores/teensy3/mk20dx256.ld,--build-id=none -lgcc $(LIBC_LINK_FLAGS)
 
-$(MAIN): $(shell find src | grep .cr) Makefile src/link.ld teensy3.o
+$(MAIN): $(shell find src | grep .cr) Makefile src/link.ld
 	@echo Creating $@...
 	@crystal build src/main.cr --verbose --cross-compile --target=arm-none-eabi --mcpu cortex-m4 --mattr thumb-mode  --prelude=empty --link-flags "$(LINKFLAGS)" -o $@
 	arm-none-eabi-gcc 'kernel.elf.o' ext/teensy-cores/teensy3/*.o  -o 'kernel.elf' -nostdlib  -Wl,-T,/osc/ext/teensy-cores/teensy3/mk20dx256.ld,--build-id=none    -L/usr/lib -L/usr/local/lib $(LIBC_LINK_FLAGS)
