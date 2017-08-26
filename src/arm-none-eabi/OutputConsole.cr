@@ -10,6 +10,11 @@ struct OutputConsole
     print(str)
     Teensy3.usb_serial_putchar 0x0a
   end
+
+  def puti(integer)
+    Teensy3.usb_serial_putchar(0x30 + integer)
+    Teensy3.usb_serial_putchar 0x0a
+  end
 end
 
 STDOUT = OutputConsole.new
@@ -20,4 +25,8 @@ end
 
 def puts(str="")
   STDOUT.puts(str)
+end
+
+def puti(integer)
+  STDOUT.puti(integer)
 end

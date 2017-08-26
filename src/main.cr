@@ -5,6 +5,16 @@ require "./x86/OutputConsole"
 require "./arm-none-eabi/OutputConsole"
 {% end %}
 
-puts "Kernel booting with Crystal!"
-puts
-puts "<3"
+led_pin = 13
+output_mode = 1
+high_output = 1
+low_output = 0
+
+Teensy3.pinMode(led_pin, output_mode)
+
+while true
+  Teensy3.delay 1500
+  Teensy3.digitalWrite led_pin, high_output
+  Teensy3.delay 500
+  Teensy3.digitalWrite led_pin, low_output
+end
