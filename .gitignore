@@ -6,3 +6,5 @@ iso
 kernel.iso
 kernel.elf.o
 *.o
+*.bin
+*.hex
